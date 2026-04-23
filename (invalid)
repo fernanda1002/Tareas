@@ -1,0 +1,38 @@
+tareas = []
+
+while True:
+    print("\n--- MENÚ ---")
+    print("1. Agregar tarea")
+    print("2. Ver tareas")
+    print("3. Marcar tarea como completada")
+    print("4. Salir")
+
+    opcion = input("Elige una opción: ")
+
+    if opcion == "1":
+        tarea = input("Escribe la tarea: ")
+        tareas.append({"texto": tarea, "completada": False})
+        print("Tarea agregada")
+
+    elif opcion == "2":
+        if not tareas:
+            print("No hay tareas")
+        else:
+            for i, t in enumerate(tareas):
+                estado = "✔" if t["completada"] else "❌"
+                print(i, "-", t["texto"], estado)
+
+    elif opcion == "3":
+        num = int(input("Número de tarea: "))
+        if 0 <= num < len(tareas):
+            tareas[num]["completada"] = True
+            print("Tarea completada")
+        else:
+            print("Número inválido")
+
+    elif opcion == "4":
+        print("Adiós")
+        break
+
+    else:
+        print("Opción inválida")
